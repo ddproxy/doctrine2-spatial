@@ -1,6 +1,5 @@
 <?php
 /**
- * Copyright (C) 2013 luca capra
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +23,19 @@
 namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
-
 /**
- * Contains DQL function
+ * PointFromWKB function
  *
- * @author  luca capra <luca.capra@gmail.com>
- * @license http://dlambert.mit-license.org MIT
+ * @author  
+ * @license 
  */
-class Contains extends AbstractSpatialDQLFunction
+class PointFromWKB extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
+    protected $functionName = 'PointFromWKB';
 
-    protected $minGeomExpr = 2;
+    protected $minGeomExpr = 1;
 
-    protected $maxGeomExpr = 2;
+    protected $maxGeomExpr = 1;
 }

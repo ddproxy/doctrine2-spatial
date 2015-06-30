@@ -26,16 +26,16 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * Contains DQL function
+ * ST_Within DQL function
  *
- * @author  luca capra <luca.capra@gmail.com>
+ * @author  luca capra <luca.capra@create-net.org>
  * @license http://dlambert.mit-license.org MIT
  */
-class Contains extends AbstractSpatialDQLFunction
+class STWithin extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
+    protected $functionName = 'ST_Within';
 
     protected $minGeomExpr = 2;
 

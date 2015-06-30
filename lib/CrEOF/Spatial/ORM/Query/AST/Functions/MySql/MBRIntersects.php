@@ -26,16 +26,16 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * Contains DQL function
+ * MBRIntersects DQL function
  *
  * @author  luca capra <luca.capra@gmail.com>
  * @license http://dlambert.mit-license.org MIT
  */
-class Contains extends AbstractSpatialDQLFunction
+class MBRIntersects extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
+    protected $functionName = 'MBRIntersects';
 
     protected $minGeomExpr = 2;
 

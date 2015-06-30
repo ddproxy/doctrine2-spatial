@@ -26,16 +26,16 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * Contains DQL function
+ * ST_Overlaps DQL function
  *
- * @author  luca capra <luca.capra@gmail.com>
- * @license http://dlambert.mit-license.org MIT
+ * @author  luca capra <luca.capra@create-net.org>
+ * @license http://mit-license.org MIT
  */
-class Contains extends AbstractSpatialDQLFunction
+class STOverlaps extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
+    protected $functionName = 'ST_Overlaps';
 
     protected $minGeomExpr = 2;
 

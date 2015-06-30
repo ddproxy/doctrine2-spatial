@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright (C) 2013 luca capra
+ * Copyright (C) 2012 Derek J. Lambert
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +27,15 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * Contains DQL function
+ * Description of ST_Intersects
  *
- * @author  luca capra <luca.capra@gmail.com>
- * @license http://dlambert.mit-license.org MIT
+ * @author Maximilian
  */
-class Contains extends AbstractSpatialDQLFunction
+class ST_Intersects extends AbstractSpatialDQLFunction
 {
-    protected $platforms = array('mysql');
+	 protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
+    protected $functionName = 'ST_Intersects';
 
     protected $minGeomExpr = 2;
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2013 luca capra
+ * Copyright (C) 2012 Derek J. Lambert
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,17 @@
  * SOFTWARE.
  */
 
-namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
+namespace CrEOF\Spatial\PHP\Types\Geometry;
 
-use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
+use CrEOF\Spatial\PHP\Types\AbstractMultiPolygon;
 
 /**
- * Contains DQL function
+ * Polygon object for POLYGON geometry type
  *
- * @author  luca capra <luca.capra@gmail.com>
+ * @author  Derek J. Lambert <dlambert@dereklambert.com>
  * @license http://dlambert.mit-license.org MIT
  */
-class Contains extends AbstractSpatialDQLFunction
+class MultiPolygon extends AbstractMultiPolygon
 {
-    protected $platforms = array('mysql');
 
-    protected $functionName = 'Contains';
-
-    protected $minGeomExpr = 2;
-
-    protected $maxGeomExpr = 2;
 }
