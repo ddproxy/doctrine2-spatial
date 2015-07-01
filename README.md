@@ -60,6 +60,7 @@ Currently the following SQL functions are supported in DQL (more coming):
 * ST_LineCrossingDirection
 * ST_LineInterpolatePoint
 * ST_MakeBox2D
+* ST_MakeEnvelope
 * ST_MakeLine
 * ST_Point
 * ST_Scale
