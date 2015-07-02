@@ -11,6 +11,8 @@ This package is a refactor/continuation of djlamberts [doctrine2-spatial](https:
     	...
         "ddproxy/doctrine2-spatial": "dev-master"
 
+# Package details
+
 ## Types
 The following SQL/OpenGIS types have been implemented as PHP objects and accompanying Doctrine types:
 
