@@ -3,7 +3,7 @@
 ## composer.json
     "require": {
     	...
-        "slavenin/doctrine2-spatial": "dev-master"
+        "ddproxy/doctrine2-spatial": "dev-master"
 
 You will also have to change the version requirement of doctrine to at least 2.1:
 
