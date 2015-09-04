@@ -35,7 +35,7 @@ use CrEOF\Spatial\PHP\Types\AbstractPoint;
 abstract class AbstractMultiPolygon extends AbstractGeometry
 {
     /**
-     * @var array[] $polygons
+     * @var AbstractPolygon[]
      */
     protected $polygons = array();
 
