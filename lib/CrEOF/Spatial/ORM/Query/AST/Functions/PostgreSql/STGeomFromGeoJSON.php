@@ -30,7 +30,7 @@ use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
  * @author  Derek J. Lambert <dlambert@dereklambert.com>
  * @license http://dlambert.mit-license.org MIT
  */
-class ST_GeomFromGeoJSON extends AbstractSpatialDQLFunction
+class STGeomFromGeoJSON extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('postgresql');
 
