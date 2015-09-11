@@ -39,7 +39,7 @@ class STMakeEnvelope extends AbstractSpatialDQLFunction
 
     protected $functionName = 'ST_MakeEnvelope';
 
-    protected $minGeomExpr = 5;
+    protected $minGeomExpr = 4;
 
     protected $maxGeomExpr = 5;
 }

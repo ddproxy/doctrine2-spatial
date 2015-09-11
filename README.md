@@ -2,7 +2,16 @@
 
 Doctrine2 multi-platform support for spatial types and functions. Currently MySQL and PostgreSQL with PostGIS are supported. Could potentially add support for other platforms if an interest is expressed.
 
-This package is a refactor/continuation of my [doctrine2-mysql-spatial](https://github.com/djlambert/doctrine2-mysql-spatial) package.
+This package is a refactor/continuation of djlamberts [doctrine2-spatial](https://github.com/djlambert/doctrine2-spatial) package.
+
+# Symfony2 Install
+
+## composer.json
+    "require": {
+    	...
+        "ddproxy/doctrine2-spatial": "dev-master"
+
+# Package details
 
 ## Types
 The following SQL/OpenGIS types have been implemented as PHP objects and accompanying Doctrine types:
