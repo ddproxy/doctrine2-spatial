@@ -53,6 +53,7 @@ Currently the following SQL functions are supported in DQL (more coming):
 * ST_Envelope
 * ST_Expand
 * ST_Extent
+* ST_GeomFromGeoJSON
 * ST_GeomFromText
 * ST_Intersection
 * ST_Intersects

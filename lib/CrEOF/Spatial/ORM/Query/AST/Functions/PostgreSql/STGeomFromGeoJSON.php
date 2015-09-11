@@ -26,20 +26,17 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * ST_MakeEnvelope DQL function
- * this is a limited version of ST_MakeEnvelope, supporting only 2 points.
- * ST_MakeEnvelope also supports sets and arrays of geometry
- *
- * @author  Tom Vogt <tom@lemuria.org>
- * @license http://mit-license.org MIT
+ * ST_GeomFromGeoJSON DQL function
+ * @author  Derek J. Lambert <dlambert@dereklambert.com>
+ * @license http://dlambert.mit-license.org MIT
  */
-class STMakeEnvelope extends AbstractSpatialDQLFunction
+class ST_GeomFromGeoJSON extends AbstractSpatialDQLFunction
 {
     protected $platforms = array('postgresql');
 
-    protected $functionName = 'ST_MakeEnvelope';
+    protected $functionName = 'ST_GeomFromGeoJSON';
 
-    protected $minGeomExpr = 5;
+    protected $minGeomExpr = 1;
 
-    protected $maxGeomExpr = 5;
+    protected $maxGeomExpr = 1;
 }
