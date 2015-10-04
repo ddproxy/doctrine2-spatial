@@ -5,11 +5,27 @@
     "keywords": ["orm", "dbal", "database", "postgresql", "mysql", "opengis", "postgis", "gis", "spatial", "geometry", "geography"],
     "authors": [
         {
+            "name": "Jon West",
+            "email": "ddproxy@gmail.com",
+            "role": "Developer"
+
+        },
+        {
             "name": "Derek Lambert",
-            "email": "dlambert@dereklambert.com"
+            "email": "dlambert@dereklambert.com",
+            "role": "Original Developer"
         }
     ],
+    "support": {
+        "wiki": "https://github.com/ddproxy/doctrine2-spatial/wiki",
+        "source": "https://github.com/ddproxy/doctrine2-spatial",
+        "issues": "https://github.com/ddproxy/doctrine2-spatial/issues",
+        "docs": "https://github.com/ddproxy/doctrine2-spatial/issues"
+    },
     "license": "MIT",
+    "replace": {
+        "djlambert/doctrine2-spatial": "dev-master"
+    },
     "require": {
         "doctrine/orm": ">=2.1"
     },
@@ -21,7 +37,7 @@
     },
     "autoload": {
         "psr-0": {
-            "CrEOF\\Spatial": "lib/"
+            "DDProxy\\Spatial": "lib/"
         }
     }
 }

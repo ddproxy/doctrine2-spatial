@@ -2,7 +2,9 @@
 
 Doctrine2 multi-platform support for spatial types and functions. Currently MySQL and PostgreSQL with PostGIS are supported. Could potentially add support for other platforms if an interest is expressed.
 
-This package is a refactor/continuation of djlamberts [doctrine2-spatial](https://github.com/djlambert/doctrine2-spatial) package.
+This package is a fork of djlamberts [doctrine2-spatial](https://github.com/djlambert/doctrine2-spatial) as is intended to separate into two distinct libraries - spatial object library and doctrine-spatial-extensions
+ 
+To use in place of other doctrine2-spatial libraries, find-replace all instances of CrEOF/Spatial to DDProxy/Spatial.
 
 # Symfony2 Install
 
