@@ -1,49 +1,32 @@
-# Spatial2-Doctrine
+# Doctrine-Spatial-Extension
 
-The **Spatial2-Doctrine** library allows you to use spatial methods on your
+The **Doctrine-Spatial-Extension** library allows you to use spatial methods on your
 MySQL and PostGIS database.
 
+ * [Symfony Install]()
+ * [Symfony Configuration]()
+ * [MySQL Methods]()
+ * [PostGreSQL Methods]()
 
-## Installation
+## Types
+The following SQL/OpenGIS types have been implemented as PHP objects and accompanying Doctrine types:
 
-Require the `ddproxy/spatial2-doctrine` package in your composer.json and update
-your dependencies.
+### Geometry
+* Point
+* LineString
+* Polygon
+* MultiPoint
+* MultiLineString
+* MultiPolygon
 
-    $ composer require ddproxy/spatial2-doctrine
-    
-You will also have to change the version requirement of doctrine to at least 2.1:
+### Geography
+Similar to Geometry but SRID value is always used (SRID supported in PostGIS only), and accepts only valid "geographic" coordinates.
 
-        "doctrine/orm": ">=2.1",
+* Point
+* LineString
+* Polygon
 
-### Configuration
-Add the types and functions you need to your Symfony configuration file. The doctrine type names are not hardcoded.
-
-```yml
-	doctrine:
-	    dbal:
-	        types:
-	            geometry:   DDProxy\Spatial\DBAL\Types\GeometryType
-	            point:      DDProxy\Spatial\DBAL\Types\Geometry\PointType
-	            polygon:    DDProxy\Spatial\DBAL\Types\Geometry\PolygonType
-	            linestring: DDProxy\Spatial\DBAL\Types\Geometry\LineStringType
-
-	    orm:
-	        dql:
-	            numeric_functions:
-	                numeric_functions:
-					st_contains:     DDProxy\Spatial\ORM\Query\AST\Functions\MySql\STContains
-					contains:     DDProxy\Spatial\ORM\Query\AST\Functions\MySql\Contains
-					st_area:         DDProxy\Spatial\ORM\Query\AST\Functions\MySql\Area
-					st_geomfromtext: DDProxy\Spatial\ORM\Query\AST\Functions\MySql\GeomFromText
-					st_intersects:     DDProxy\Spatial\ORM\Query\AST\Functions\MySql\STIntersects
-                	st_buffer:     DDProxy\Spatial\ORM\Query\AST\Functions\MySql\STBuffer
-					point: DDProxy\Spatial\ORM\Query\AST\Functions\MySql\Point
-					geodist_pt: DDProxy\Spatial\ORM\Query\AST\Functions\MySql\GeodistPt
-                	distance_from_multyline: DDProxy\Spatial\ORM\Query\AST\Functions\MySql\DistanceFromMultyLine
-```
-
-## Usage
-
+There is support for both WKB/WKT and EWKB/EWKT return values. Currently only WKT/EWKT is used in statements.
 
 ### DQL AST Walker
 A DQL AST walker is included which when used with the following DQL functions will return the appropriate Geometry type object from queries instead of strings:
