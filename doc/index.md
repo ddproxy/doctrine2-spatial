@@ -3,10 +3,11 @@
 The **Doctrine-Spatial-Extension** library allows you to use spatial methods on your
 MySQL and PostGIS database.
 
- * [Symfony Install]()
- * [Symfony Configuration]()
- * [MySQL Methods]()
- * [PostGreSQL Methods]()
+ * [Symfony Install](install.md)
+ * [Symfony Configuration](configuration.md)
+ * [Common Methods](common.md) (also included in MySQL and PostGreSQL)
+ * [MySQL Methods](mysql.md)
+ * [PostGreSQL Methods](postgresql.md)
 
 ## Types
 The following SQL/OpenGIS types have been implemented as PHP objects and accompanying Doctrine types:

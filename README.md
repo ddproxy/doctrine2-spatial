@@ -17,4 +17,4 @@ djlamberts [doctrine2-spatial](https://github.com/djlambert/doctrine2-spatial),
 find-replace all instances of CrEOF/Spatial to DDProxy/Spatial and Spatial/DBAL or Spatial/ORM to Doctrine/DBAL or
 Doctrine/ORM respectively.
 
-Documentation can be found at [in this repository](https://github.com/ddproxy/doctrine2-spatial/blob/doc/index.md)
+Documentation can be found at [in this repository](./doc/index.md)
