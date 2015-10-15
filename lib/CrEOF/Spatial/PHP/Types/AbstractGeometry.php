@@ -284,4 +284,22 @@ abstract class AbstractGeometry implements GeometryInterface
 
         return implode(',', $strings);
     }
+
+    /**
+     * @param array[] $multipolygon
+     *
+     * @return string
+     */
+     private function toStringMultiPolygon(array $polygons)
+     {
+      //   return $this->toStringMultiLineString($polygon);
+
+          $strings = null;
+
+         foreach ($polygons as $polygon) {
+             $strings[] = '(' . $this->toStringPolygon($polygon) . ')';
+         }
+
+         return implode(',', $strings);
+     }
 }
