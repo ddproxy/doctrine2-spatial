@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) 2013 luca capra
  *
@@ -26,18 +27,16 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * ST_Equals DQL function
+ * STEquals DQL function
  *
  * @author  luca capra <luca.capra@create-net.org>
  * @license http://dlambert.mit-license.org MIT
  */
-class STEquals extends AbstractSpatialDQLFunction
-{
+class STEquals extends AbstractSpatialDQLFunction {
+
     protected $platforms = array('mysql');
-
     protected $functionName = 'ST_Equals';
-
     protected $minGeomExpr = 2;
-
     protected $maxGeomExpr = 2;
+
 }

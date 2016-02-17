@@ -1,5 +1,6 @@
 <?php
 /**
+ * Copyright (C) 2013 Damiano Ciarla
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +24,12 @@
 namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
+
 /**
- * LineString function
+ * GLength DQL function
  *
- * @author  
- * @license 
+ * @author  Damiano Ciarla <damiano.ciarla@gmail.com>
+ * @license http://opensource.org/licenses/MIT MIT
  */
 class LineString extends AbstractSpatialDQLFunction
 {

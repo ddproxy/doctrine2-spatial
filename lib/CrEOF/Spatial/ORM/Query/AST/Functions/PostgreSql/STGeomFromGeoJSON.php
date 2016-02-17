@@ -40,3 +40,5 @@ class STGeomFromGeoJSON extends AbstractSpatialDQLFunction
 
     protected $maxGeomExpr = 1;
 }
+
+

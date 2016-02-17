@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2012 Derek J. Lambert
+ * Copyright (C) 2015 Derek J. Lambert
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,12 @@
  * SOFTWARE.
  */
 
-namespace CrEOF\Spatial\Tests\ORM\Functions\PostgreSql;
+namespace CrEOF\Spatial\Tests\ORM\Query\AST\Functions\PostgreSql;
 
 use CrEOF\Spatial\PHP\Types\Geometry\LineString;
 use CrEOF\Spatial\PHP\Types\Geometry\Point;
 use CrEOF\Spatial\Tests\Fixtures\LineStringEntity;
-use CrEOF\Spatial\Tests\OrmTest;
+use CrEOF\Spatial\Tests\OrmTestCase;
 use Doctrine\ORM\Query;
 
 /**
@@ -35,14 +35,15 @@ use Doctrine\ORM\Query;
  * @author  Derek J. Lambert <dlambert@dereklambert.com>
  * @license http://dlambert.mit-license.org MIT
  *
- * @group postgresql
  * @group dql
  */
-class STLengthTest extends OrmTest
+class STLengthTest extends OrmTestCase
 {
     protected function setUp()
     {
-        $this->useEntity('linestring');
+        $this->usesEntity(self::LINESTRING_ENTITY);
+        $this->supportsPlatform('postgresql');
+
         parent::setUp();
     }
 
@@ -61,12 +62,11 @@ class STLengthTest extends OrmTest
             ))
         );
 
-        $this->_em->persist($entity);
-        $this->_em->flush();
-        $this->_em->clear();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
+        $this->getEntityManager()->clear();
 
-        $query = $this->_em->createQuery('SELECT l, ST_Length(l.lineString) FROM CrEOF\Spatial\Tests\Fixtures\LineStringEntity l');
-
+        $query  = $this->getEntityManager()->createQuery('SELECT l, ST_Length(l.lineString) FROM CrEOF\Spatial\Tests\Fixtures\LineStringEntity l');
         $result = $query->getResult();
 
         $this->assertCount(1, $result);
@@ -79,13 +79,7 @@ class STLengthTest extends OrmTest
      */
     public function testSTLengthWhereParameter()
     {
-        $lineString = new LineString(array(
-            new Point(0, 0),
-            new Point(1, 1),
-            new Point(2, 2),
-            new Point(3, 3)
-        ));
-        $entity     = new LineStringEntity();
+        $entity = new LineStringEntity();
 
         $entity->setLineString(new LineString(
             array(
@@ -95,13 +89,13 @@ class STLengthTest extends OrmTest
             ))
         );
 
-        $this->_em->persist($entity);
-        $this->_em->flush();
-        $this->_em->clear();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
+        $this->getEntityManager()->clear();
 
-        $query = $this->_em->createQuery('SELECT l FROM CrEOF\Spatial\Tests\Fixtures\LineStringEntity l WHERE ST_Length(ST_GeomFromText(:p1)) > ST_Length(l.lineString)');
+        $query = $this->getEntityManager()->createQuery('SELECT l FROM CrEOF\Spatial\Tests\Fixtures\LineStringEntity l WHERE ST_Length(ST_GeomFromText(:p1)) > ST_Length(l.lineString)');
 
-        $query->setParameter('p1', $lineString, 'linestring');
+        $query->setParameter('p1', 'LINESTRING(0 0,1 1,2 2,3 3)', 'string');
 
         $result = $query->getResult();
 

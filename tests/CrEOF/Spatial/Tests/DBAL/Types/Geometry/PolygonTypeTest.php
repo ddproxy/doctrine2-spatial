@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2012 Derek J. Lambert
+ * Copyright (C) 2015 Derek J. Lambert
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ use Doctrine\ORM\Query;
 use CrEOF\Spatial\PHP\Types\Geometry\LineString;
 use CrEOF\Spatial\PHP\Types\Geometry\Point;
 use CrEOF\Spatial\PHP\Types\Geometry\Polygon;
-use CrEOF\Spatial\Tests\OrmTest;
+use CrEOF\Spatial\Tests\OrmTestCase;
 use CrEOF\Spatial\Tests\Fixtures\PolygonEntity;
 
 /**
@@ -38,11 +38,11 @@ use CrEOF\Spatial\Tests\Fixtures\PolygonEntity;
  *
  * @group geometry
  */
-class PolygonTypeTest extends OrmTest
+class PolygonTypeTest extends OrmTestCase
 {
     protected function setUp()
     {
-        $this->useEntity('polygon');
+        $this->usesEntity(self::POLYGON_ENTITY);
         parent::setUp();
     }
 
@@ -50,14 +50,14 @@ class PolygonTypeTest extends OrmTest
     {
         $entity = new PolygonEntity();
 
-        $this->_em->persist($entity);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
 
         $id = $entity->getId();
 
-        $this->_em->clear();
+        $this->getEntityManager()->clear();
 
-        $queryEntity = $this->_em->getRepository(self::POLYGON_ENTITY)->find($id);
+        $queryEntity = $this->getEntityManager()->getRepository(self::POLYGON_ENTITY)->find($id);
 
         $this->assertEquals($entity, $queryEntity);
     }
@@ -76,14 +76,14 @@ class PolygonTypeTest extends OrmTest
         $entity = new PolygonEntity();
 
         $entity->setPolygon(new Polygon($rings));
-        $this->_em->persist($entity);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
 
         $id = $entity->getId();
 
-        $this->_em->clear();
+        $this->getEntityManager()->clear();
 
-        $queryEntity = $this->_em->getRepository(self::POLYGON_ENTITY)->find($id);
+        $queryEntity = $this->getEntityManager()->getRepository(self::POLYGON_ENTITY)->find($id);
 
         $this->assertEquals($entity, $queryEntity);
     }
@@ -109,14 +109,14 @@ class PolygonTypeTest extends OrmTest
         $entity = new PolygonEntity();
 
         $entity->setPolygon(new Polygon($rings));
-        $this->_em->persist($entity);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
 
         $id = $entity->getId();
 
-        $this->_em->clear();
+        $this->getEntityManager()->clear();
 
-        $queryEntity = $this->_em->getRepository(self::POLYGON_ENTITY)->find($id);
+        $queryEntity = $this->getEntityManager()->getRepository(self::POLYGON_ENTITY)->find($id);
 
         $this->assertEquals($entity, $queryEntity);
     }
@@ -135,11 +135,11 @@ class PolygonTypeTest extends OrmTest
         $entity = new PolygonEntity();
 
         $entity->setPolygon(new Polygon($rings));
-        $this->_em->persist($entity);
-        $this->_em->flush();
-        $this->_em->clear();
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
+        $this->getEntityManager()->clear();
 
-        $result = $this->_em->getRepository(self::POLYGON_ENTITY)->findByPolygon(new Polygon($rings));
+        $result = $this->getEntityManager()->getRepository(self::POLYGON_ENTITY)->findByPolygon(new Polygon($rings));
 
         $this->assertEquals($entity, $result[0]);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) 2012 Tom Vogt
  *
@@ -26,18 +27,16 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * ST_Touches DQL function
+ * STTouches DQL function
  *
  * @author  Tom Vogt <tom@lemuria.org>
  * @license http://mit-license.org MIT
  */
-class STTouches extends AbstractSpatialDQLFunction
-{
+class STTouches extends AbstractSpatialDQLFunction {
+
     protected $platforms = array('mysql');
-
     protected $functionName = 'ST_Touches';
-
     protected $minGeomExpr = 2;
-
     protected $maxGeomExpr = 2;
+
 }

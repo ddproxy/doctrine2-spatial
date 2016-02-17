@@ -27,17 +27,15 @@ namespace CrEOF\Spatial\ORM\Query\AST\Functions\MySql;
 use CrEOF\Spatial\ORM\Query\AST\Functions\AbstractSpatialDQLFunction;
 
 /**
- * Description of ST_Intersects
+ * Description of STIntersects
  *
  * @author Maximilian
  */
-class STBuffer extends AbstractSpatialDQLFunction
-{
-	 protected $platforms = array('mysql');
+class STBuffer extends AbstractSpatialDQLFunction {
 
+    protected $platforms = array('mysql');
     protected $functionName = 'ST_Buffer';
-
     protected $minGeomExpr = 2;
-
     protected $maxGeomExpr = 2;
+
 }

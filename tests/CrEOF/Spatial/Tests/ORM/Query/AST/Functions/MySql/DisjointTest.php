@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2012 Derek J. Lambert
+ * Copyright (C) 2015 Derek J. Lambert
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,13 @@
  * SOFTWARE.
  */
 
-namespace CrEOF\Spatial\Tests\ORM\Functions\MySql;
+namespace CrEOF\Spatial\Tests\ORM\Query\AST\Functions\MySql;
 
 use CrEOF\Spatial\PHP\Types\Geometry\LineString;
 use CrEOF\Spatial\PHP\Types\Geometry\Point;
 use CrEOF\Spatial\PHP\Types\Geometry\Polygon;
 use CrEOF\Spatial\Tests\Fixtures\PolygonEntity;
-use CrEOF\Spatial\Tests\OrmTest;
+use CrEOF\Spatial\Tests\OrmTestCase;
 use Doctrine\ORM\Query;
 
 /**
@@ -36,14 +36,15 @@ use Doctrine\ORM\Query;
  * @author  Derek J. Lambert <dlambert@dereklambert.com>
  * @license http://dlambert.mit-license.org MIT
  *
- * @group mysql
  * @group dql
  */
-class DisjointTest extends OrmTest
+class DisjointTest extends OrmTestCase
 {
     protected function setUp()
     {
-        $this->useEntity('polygon');
+        $this->usesEntity(self::POLYGON_ENTITY);
+        $this->supportsPlatform('mysql');
+
         parent::setUp();
     }
 
@@ -77,24 +78,24 @@ class DisjointTest extends OrmTest
         $entity1 = new PolygonEntity();
 
         $entity1->setPolygon(new Polygon(array($lineString1)));
-        $this->_em->persist($entity1);
+        $this->getEntityManager()->persist($entity1);
 
         $entity2 = new PolygonEntity();
 
         $entity2->setPolygon(new Polygon(array($lineString2)));
-        $this->_em->persist($entity2);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($entity2);
+        $this->getEntityManager()->flush();
 
         $entity3 = new PolygonEntity();
 
         $entity3->setPolygon(new Polygon(array($lineString3)));
-        $this->_em->persist($entity3);
-        $this->_em->flush();
-        $this->_em->clear();
+        $this->getEntityManager()->persist($entity3);
+        $this->getEntityManager()->flush();
+        $this->getEntityManager()->clear();
 
-        $query = $this->_em->createQuery('SELECT p, Disjoint(p.polygon, GeomFromText(:p1)) FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p');
+        $query  = $this->getEntityManager()->createQuery('SELECT p, Disjoint(p.polygon, GeomFromText(:p1)) FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p');
 
-        $query->setParameter('p1', new Polygon(array($lineString2)), 'polygon');
+        $query->setParameter('p1', 'POLYGON((5 5,7 5,7 7,5 7,5 5))', 'string');
 
         $result = $query->getResult();
 
@@ -137,34 +138,34 @@ class DisjointTest extends OrmTest
         $entity1 = new PolygonEntity();
 
         $entity1->setPolygon(new Polygon(array($lineString1)));
-        $this->_em->persist($entity1);
+        $this->getEntityManager()->persist($entity1);
 
         $entity2 = new PolygonEntity();
 
         $entity2->setPolygon(new Polygon(array($lineString2)));
-        $this->_em->persist($entity2);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($entity2);
+        $this->getEntityManager()->flush();
 
         $entity3 = new PolygonEntity();
 
         $entity3->setPolygon(new Polygon(array($lineString3)));
-        $this->_em->persist($entity3);
-        $this->_em->flush();
-        $this->_em->clear();
+        $this->getEntityManager()->persist($entity3);
+        $this->getEntityManager()->flush();
+        $this->getEntityManager()->clear();
 
-        $query = $this->_em->createQuery('SELECT p FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p WHERE Disjoint(p.polygon, GeomFromText(:p1)) = 1');
+        $query  = $this->getEntityManager()->createQuery('SELECT p FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p WHERE Disjoint(p.polygon, GeomFromText(:p1)) = 1');
 
-        $query->setParameter('p1', new Polygon(array($lineString2)), 'polygon');
+        $query->setParameter('p1', 'POLYGON((5 5,7 5,7 7,5 7,5 5))', 'string');
 
         $result = $query->getResult();
 
         $this->assertCount(1, $result);
         $this->assertEquals($entity3, $result[0]);
-        $this->_em->clear();
+        $this->getEntityManager()->clear();
 
-        $query = $this->_em->createQuery('SELECT p FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p WHERE Disjoint(p.polygon, GeomFromText(:p1)) = 1');
+        $query  = $this->getEntityManager()->createQuery('SELECT p FROM CrEOF\Spatial\Tests\Fixtures\PolygonEntity p WHERE Disjoint(p.polygon, GeomFromText(:p1)) = 1');
 
-        $query->setParameter('p1', new Polygon(array($lineString3)), 'polygon');
+        $query->setParameter('p1', 'POLYGON((15 15,17 15,17 17,15 17,15 15))', 'string');
 
         $result = $query->getResult();
 
